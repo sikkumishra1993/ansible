@@ -1,0 +1,16 @@
+---
+- name: Create directory and add test file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create a directory
+      file:
+        path: /etc/testing/
+        state: directory
+        mode: '0755'
+
+    - name: Create a test file in the directory
+      copy:
+        dest: /etc/testing/testfile.txt
+        content: "This is a test file."
+        mode: '0644'
