@@ -11,6 +11,6 @@
 
     - name: Create a test file in the directory
       copy:
-        dest: /etc/testing/testfile.txt
+        dest: /etc/testing/testfile2.txt
         content: "This is a test file."
         mode: '0644'
