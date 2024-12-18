@@ -17,7 +17,7 @@
 
     
     - name: Install a package
-      apt:
+      yum:
         name: nginx
         state: present
 
