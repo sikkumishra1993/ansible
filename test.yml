@@ -14,3 +14,21 @@
         dest: /etc/testing/testfile2.txt
         content: "This is a test file."
         mode: '0644'
+
+    
+    - name: Install a package
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create a symbolic link
+      file:
+        src: /etc/testing/testfile2.txt
+        dest: /etc/testing/testfile_link.txt
+        state: link
