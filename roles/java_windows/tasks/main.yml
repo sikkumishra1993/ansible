@@ -18,16 +18,9 @@
     state: present
     level: machine
 
-# - name: Add JAVA_HOME to PATH
-#   win_environment:
-#     name: PATH
-#     value: C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
-#     state: present
-#     level: machine
-
-# - name: Add JAVA_HOME to PATH
-#   ansible.windows.win_path:
-#     elements:
-#       - C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
-#     state: present
-#     scope: machine
+- name: Add JAVA_HOME to PATH
+  ansible.windows.win_path:
+    elements:
+      - C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
+    state: present
+    scope: machine
