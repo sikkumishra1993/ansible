@@ -1,0 +1,33 @@
+---
+
+- name: Download JDK 17 MSI package
+  win_get_url:
+    url: https://aka.ms/download-jdk/microsoft-jdk-17.0.14-windows-x64.msi
+    dest: C:\temp\microsoft-jdk-17.0.14-windows-x64.msi
+
+- name: Install JDK 17
+  win_package:
+    path: C:\temp\microsoft-jdk-17.0.14-windows-x64.msi
+    state: present
+    arguments: /quiet /norestart
+
+- name: Set JAVA_HOME environment variable
+  win_environment:
+    name: JAVA_HOME
+    value: C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
+    state: present
+    level: machine
+
+# - name: Add JAVA_HOME to PATH
+#   win_environment:
+#     name: PATH
+#     value: C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
+#     state: present
+#     level: machine
+
+- name: Add JAVA_HOME to PATH
+  ansible.windows.win_path:
+    elements:
+      - C:\Program Files\Microsoft\jdk-17.0.14.7-hotspot\bin
+    state: present
+    scope: machine

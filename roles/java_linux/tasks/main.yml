@@ -1,0 +1,13 @@
+---
+# filepath: roles/java_linux/tasks/main.yml
+- name: Install Java on Linux
+  package:
+    name: openjdk-17-jdk
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install Java on RedHat-based systems
+  package:
+    name: java-17-openjdk
+    state: present
+  when: ansible_os_family == "RedHat"

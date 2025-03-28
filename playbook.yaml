@@ -1,0 +1,15 @@
+---
+- name: Install Java on Windows and Linux
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Include Linux role if OS is Linux
+      include_role:
+        name: java_linux
+      become: true
+      when: ansible_os_family == "RedHat" or ansible_os_family == "Debian"
+
+    - name: Include Windows role if OS is Windows
+      include_role:
+        name: java_windows
+      when: ansible_os_family == "Windows"
